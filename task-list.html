@@ -12,7 +12,11 @@
       }
     </style>
     <ul class="task-list">
-      <template is="dom-repeat" items=[[taskList]]>
+      <template 
+        is="dom-repeat" 
+        items=[[taskList]]
+        sort="sortState"  
+      >
         <li>
           <task-element
           key=[[item.id]]
@@ -40,6 +44,12 @@
         return {
           taskList: Array
         };
+      }
+
+      sortState(prev, curr) {
+        let valuePrev = prev.canceled + (prev.done * 2);
+        let valueCurr = curr.canceled + (curr.done * 2);
+        return valuePrev - valueCurr;
       }
     }
 
