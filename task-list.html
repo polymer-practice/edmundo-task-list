@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../task-element/task-element.html">
 
 <dom-module id="task-list">
   <template>
@@ -6,8 +7,22 @@
       :host {
         display: block;
       }
+      .task-list {
+        list-style: none;
+      }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <ul class="task-list">
+      <template is="dom-repeat" items=[[taskList]]>
+        <li>
+          <task-element
+          key=[[item.id]]
+          item-title=[[item.title]]
+          is-done=[[item.done]]
+          is-cancelled=[[item.canceled]]
+          ></task-element>
+        </li>
+      </template>
+    </ul>
   </template>
 
   <script>
@@ -23,10 +38,7 @@
       static get is() { return 'task-list'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'task-list'
-          }
+          taskList: Array
         };
       }
     }

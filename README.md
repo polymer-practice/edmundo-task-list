@@ -11,7 +11,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ```
 $ polymer serve
 ```
-
+if you want to automatically open in web browser after creating the server add `-o`tag.
 ## Running Tests
 
 ```
